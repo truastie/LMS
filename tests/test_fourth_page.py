@@ -7,21 +7,19 @@ from pages.fourth_page import FourthPage
 class TestFourthPage:
 
     @pytest.mark.positive
-    @pytest.mark.parametrize("login, password, expect_success", [
-        ("problem_user", "secret_sauce", True),
-        ("problem_user", "wrong_password", False),
-        ("", "", False),
-    ])
-    def test_fourth_page(self, page, login, password, expect_success):
+
+    def test_fourth_page(self, page):
         fourth_page=FourthPage(page)
         with allure.step("Open URL"):
             fourth_page.open_page("https://www.saucedemo.com/")
         with allure.step("Fill login field"):
-            fourth_page.fill_login_field(login)
+            fourth_page.fill_login_field("problem_user")
         with allure.step("Fill password field"):
-            fourth_page.fill_password_field(password)
+            fourth_page.fill_password_field("secret_sauce")
         with allure.step("Clicking Login Button"):
             fourth_page.click_login_button()
+        with allure.step("Checking open URL"):
+            fourth_page.opened_page()
 
 
     def test_empty_username_field(self, page):

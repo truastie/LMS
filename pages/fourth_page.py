@@ -1,3 +1,5 @@
+from playwright.sync_api import expect
+
 from pages.base_page import BasePage
 
 
@@ -19,6 +21,9 @@ class FourthPage(BasePage):
 
     def click_login_button(self):
         self.BUTTON.click(timeout=self.timeout)
+
+    def opened_page(self):
+        expect(self.page).to_have_url("https://www.saucedemo.com/inventory.html", timeout=self.timeout)
 
     def error_message_empty_username(self):
         if self.ERROR_EMPTY_USERNAME.is_visible():
