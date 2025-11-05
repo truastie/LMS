@@ -1,3 +1,5 @@
+
+
 from pages.base_page import BasePage
 
 
@@ -26,3 +28,6 @@ class FirstPage(BasePage):
 
     def clicking_button(self):
         self.SUBMIT_BUTTON.click()
+
+
+
