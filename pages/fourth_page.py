@@ -8,6 +8,8 @@ class FourthPage(BasePage):
         self.LOGIN_FIELD = self.page.locator('//*[@id="user-name"]')
         self.PASSWORD_FIELD = self.page.locator('//*[@id="password"]')
         self.BUTTON = self.page.locator('//*[@id="login-button"]')
+        self.ERROR_EMPTY_PASSWORD=self.page.get_by_text('Epic sadface: Password is required')
+        self.ERROR_EMPTY_USERNAME=self.page.get_by_text('Epic sadface: Username is required')
 
     def fill_login_field(self, login):
         self.LOGIN_FIELD.fill(login, timeout=self.timeout)
@@ -17,3 +19,14 @@ class FourthPage(BasePage):
 
     def click_login_button(self):
         self.BUTTON.click(timeout=self.timeout)
+
+    def error_message_empty_username(self):
+        if self.ERROR_EMPTY_USERNAME.is_visible():
+            return self.ERROR_EMPTY_USERNAME.text_content()
+
+    def error_message_empty_password(self):
+        if self.ERROR_EMPTY_PASSWORD.is_visible():
+            return self.ERROR_EMPTY_PASSWORD.text_content()
+
+
+
