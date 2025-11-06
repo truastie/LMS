@@ -21,6 +21,7 @@ class TestFourthPage:
         with allure.step("Checking open URL"):
             fourth_page.opened_page()
 
+    @pytest.mark.negative
 
     def test_empty_username_field(self, page):
         fourth_page = FourthPage(page)
