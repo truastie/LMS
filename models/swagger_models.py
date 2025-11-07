@@ -15,8 +15,15 @@ class LoginModel(BaseModel):
 class LoginResponseModel(BaseModel):
     root: bool
 
+class AddBooksRequestModel(BaseModel):
+    isbn: str
+
 class AddingBookModel(BaseModel):
     userId: str
+    collectionOfIsbns: list[AddBooksRequestModel]
+
+class AddBooks(BaseModel):
+    isbn:str
 
 class AddingBookResponseModel(BaseModel):
-    isbn: str
+    books: list[AddBooks]
